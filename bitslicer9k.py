@@ -5,15 +5,15 @@ class BitSlicer9k:
         '''
         if not isinstance(bites,bytes):
             raise TypeError('bites needs to be type bytes')
-        self.bit_idx=(len(bites)*8)
+        self.idx=(len(bites)*8)
         self.bits=int.from_bytes(bites,byteorder='big')
            
     def slice(self,num_bits):
         '''
-        Starting at self.bit_idx of self.bits, slice off num_bits of bits.
+        Starting at self.idx of self.bits, slice off num_bits of bits.
         ''' 
-        bitslice= (self.bits >> (self.bit_idx-num_bits)) & ~(~0 << num_bits)
-        self.bit_idx -=num_bits
+        bitslice= (self.bits >> (self.idx-num_bits)) & ~(~0 << num_bits)
+        self.idx -=num_bits
         return bitslice
         
     def hexed(self,num_bits):
