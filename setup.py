@@ -11,7 +11,7 @@ setuptools.setup(
     description="Super Fast Bit Slicer",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/futzu/bitslicer9k"
+    url="https://github.com/futzu/bitslicer9k",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
