@@ -27,3 +27,8 @@ class BitSlicer9k:
         returns one bit as True or False
         '''
         return  self.slice(num_bits) ==1
+
+    
+    
+    
+    
