@@ -1,6 +1,6 @@
 # bitslicer9k
-Super fast super easy bitslicing. Perfect for mpeg transport streams.
-* bitshift speed with out the bitshift complexity.
+* Super fast bitslicing. 
+* bitshift speed without bitwise complexity.
 
 #### I used to do this
 ```python3
