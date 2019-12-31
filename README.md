@@ -1,4 +1,4 @@
-# bitslicer 9k
+# Bit Slicer 9k
 * Super fast bitslicing. 
 * bitshift speed without bitwise complexity.
 
