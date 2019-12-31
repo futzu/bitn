@@ -29,13 +29,13 @@ Super fast super easy bitslicing. Perfect for mpeg transport streams.
     afc=header.slice(2)
     count=header.slice(4)
 ```
-## Install
+## Install:
 ```python3
 pip install bitslicer9k
 ```
 
 ## Help(BitSlicer9k)
-```python3
+```
 
 Help on class BitSlicer9k in module bitslicer9k:
 
@@ -67,8 +67,8 @@ class BitSlicer9k(builtins.object)
 
 ```
 
-## Use
-
+## Usage:
+  *  Parse  a SCTE 35 splice information section from a hex encoded string
 
 ```python3
 
