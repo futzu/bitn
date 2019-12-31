@@ -34,7 +34,7 @@ Super fast super easy bitslicing. Perfect for mpeg transport streams.
 pip install bitslicer9k
 ```
 
-##v Help(BitSlicer9k)
+## Help(BitSlicer9k)
 ```python3
 
 Help on class BitSlicer9k in module bitslicer9k:
