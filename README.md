@@ -67,7 +67,7 @@ class BitSlicer9k(builtins.object)
 
 ```
 
-#### Usage
+#### Example Usage
   *  Parse  a SCTE 35 splice information section from a hex encoded string
 
 ```python3
