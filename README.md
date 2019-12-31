@@ -1,7 +1,7 @@
 # bitslicer9k
 Super fast super easy bitslicing. Perfect for mpeg transport streams.
 
-### Instead of this 
+### Instead of this: 
 ```python3
    from struct import unpack
      
@@ -15,7 +15,7 @@ Super fast super easy bitslicing. Perfect for mpeg transport streams.
     count = one_byte & 15
 ```
 
-### Use bitslicer9k and do this 
+### Use bitslicer9k and do this: 
 ```python3
     from bitslicer9k import BitSlicer9k
     
