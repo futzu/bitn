@@ -34,6 +34,39 @@ Super fast super easy bitslicing. Perfect for mpeg transport streams.
 pip install bitslicer9k
 ```
 
+##v Help(BitSlicer9k)
+```python3
+
+Help on class BitSlicer9k in module bitslicer9k:
+
+class BitSlicer9k(builtins.object)
+ |  BitSlicer9k(bites)
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, bites)
+ |      From bytes to bits
+ |  
+ |  boolean(self, num_bits=1)
+ |      returns one bit as True or False
+ |  
+ |  hexed(self, num_bits)
+ |      return the hex value of a bitslice
+ |  
+ |  slice(self, num_bits)
+ |      Starting at self.idx of self.bits, slice off num_bits of bits.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+
+```
+
 ## Use
 
 
