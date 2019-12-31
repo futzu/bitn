@@ -1,7 +1,7 @@
 # bitslicer9k
 Super fast super easy bitslicing. Perfect for mpeg transport streams.
 
-### Instead of this: 
+#### Instead of this: 
 ```python3
    from struct import unpack
      
@@ -15,7 +15,7 @@ Super fast super easy bitslicing. Perfect for mpeg transport streams.
     count = one_byte & 15
 ```
 
-### Use bitslicer9k and do this: 
+#### Use bitslicer9k and do this: 
 ```python3
     from bitslicer9k import BitSlicer9k
     
@@ -29,12 +29,12 @@ Super fast super easy bitslicing. Perfect for mpeg transport streams.
     afc=header.slice(2)
     count=header.slice(4)
 ```
-## Install:
+### Install
 ```python3
 pip install bitslicer9k
 ```
 
-## Help(BitSlicer9k)
+#### Help(BitSlicer9k)
 ```
 
 Help on class BitSlicer9k in module bitslicer9k:
@@ -67,7 +67,7 @@ class BitSlicer9k(builtins.object)
 
 ```
 
-## Usage:
+## Usage
   *  Parse  a SCTE 35 splice information section from a hex encoded string
 
 ```python3
@@ -97,8 +97,6 @@ class BitSlicer9k(builtins.object)
         def time_90k(k):
             t= k/90000.0    
             return f'{t :.6f}'
-
-
 
 
 >>> bs=BitSlicer9k(bites)
