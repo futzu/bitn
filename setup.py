@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bitslicer9k",
-    version="1.0.11",
+    version="1.0.13",
     author="fu-corp",
     author_email="spam@futzu.com",
     description="Super Fast Bit Slicer",
