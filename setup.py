@@ -5,15 +5,15 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bitslicer9k",
-    version="1.0.09",
+    version="1.0.11",
     author="fu-corp",
     author_email="spam@futzu.com",
     description="Super Fast Bit Slicer",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/futzu/bitslicer9k",
-    packages=setuptools.find_packages(),
-    #py_modules=['bitslicer9k'],
+    #packages=setuptools.find_packages(),
+    py_modules=['bitslicer9k'],
      platforms='all',
     classifiers=[
         "Programming Language :: Python :: 3",
