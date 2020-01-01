@@ -34,7 +34,7 @@
 pip install bitslicer9k
 ```
 
-#### Help(BitSlicer9k)
+#### Help(Slicer9k)
 ```
 Help on class Slicer9k in module bitslicer9k:
 
@@ -46,6 +46,9 @@ class Slicer9k(builtins.object)
  |  __init__(self, bites)
  |      From bytes to bits
  |  
+ |  as90k(self, num_bits)
+ |      return bitslice as 90k time
+ |  
  |  asflag(self, num_bits=1)
  |      returns one bit as True or False
  |  
@@ -55,7 +58,7 @@ class Slicer9k(builtins.object)
  |  asint(self, num_bits)
  |      Starting at self.idx of self.bits, slice off num_bits of bits.
  |  
- |  -------------------------------------------------------------------
+ |  ----------------------------------------------------------------------
 ```
 
 #### Example Usage
@@ -79,16 +82,12 @@ class Slicer9k(builtins.object)
             self.protocol_version = bs.asint(8)
             self.encrypted_packet =  bs.asflag(1)
             self.encryption_algorithm =bs.asint(6)
-            self.pts_adjustment = self.time_90k(bs.asint(33))
+            self.pts_adjustment = bs.as90k(33)
             self.cw_index = bs.ashex(8)
             self.tier = bs.ashex(12)
             self.splice_command_length = bs.asint(12)
             self.splice_command_type = bs.asint(8)
-               
-        def time_90k(k):
-            t= k/90000.0    
-            return f'{t :.6f}'
-
+      
 
 >>> bs=Slicer9k(bites)
 
