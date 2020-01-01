@@ -17,17 +17,17 @@
 ```
 #### Now I use bitslicer9k and do this
 ```python3
-    from bitslicer9k import BitSlicer9k
+    from bitslicer9k import Slicer9k
     
-    header= BitSlicer9k(packet[:4])
-    sync=header.slice(8)
-    tei=header.boolean(1)
-    pusi=header.boolean(1)
-    ts_priority=header.boolean(1)
-    pid=header.slice(13)
-    scramble=header.slice(2)
-    afc=header.slice(2)
-    count=header.slice(4)
+    header= Slicer9k(packet[:4])
+    sync=header.asint(8)
+    tei=header.asflag(1)
+    pusi=header.asflag(1)
+    ts_priority=header.asflag(1)
+    pid=header.asint(13)
+    scramble=header.asint(2)
+    afc=header.asint(2)
+    count=header.asint(4)
 ```
 #### Install
 ```python3
@@ -36,35 +36,26 @@ pip install bitslicer9k
 
 #### Help(BitSlicer9k)
 ```
+Help on class Slicer9k in module bitslicer9k:
 
-Help on class BitSlicer9k in module bitslicer9k:
-
-class BitSlicer9k(builtins.object)
- |  BitSlicer9k(bites)
+class Slicer9k(builtins.object)
+ |  Slicer9k(bites)
  |  
  |  Methods defined here:
  |  
  |  __init__(self, bites)
  |      From bytes to bits
  |  
- |  boolean(self, num_bits=1)
+ |  asflag(self, num_bits=1)
  |      returns one bit as True or False
  |  
- |  hexed(self, num_bits)
+ |  ashex(self, num_bits)
  |      return the hex value of a bitslice
  |  
- |  slice(self, num_bits)
+ |  asint(self, num_bits)
  |      Starting at self.idx of self.bits, slice off num_bits of bits.
  |  
- |  ----------------------------------------------------------------------
- |  Data descriptors defined here:
- |  
- |  __dict__
- |      dictionary for instance variables (if defined)
- |  
- |  __weakref__
- |      list of weak references to the object (if defined)
-
+ |  -------------------------------------------------------------------
 ```
 
 #### Example Usage
@@ -72,7 +63,7 @@ class BitSlicer9k(builtins.object)
 
 ```python3
 
->>> from bitslicer9k import BitSlicer9k   
+>>> from bitslicer9k import Slicer9k   
     
 
 >>> bites= bytes.fromhex( 'FC302F000000000000FFFFF00506FEAEF17C4C0019021743554549480000077F9F0808000000002CA56C97110000C4876A2E')
@@ -80,26 +71,26 @@ class BitSlicer9k(builtins.object)
 
 >>> class Splice_Info_Section:    
         def __init__(self,bs):
-            self.table_id =bs.hexed(8)
-            self.section_syntax_indicator = bs.boolean(1)
-            self.private = bs.boolean(1)
-            self.reserved=bs.slice(2)
-            self.section_length = bs.slice(12)
-            self.protocol_version = bs.slice(8)
-            self.encrypted_packet =  bs.boolean(1)
-            self.encryption_algorithm =bs.slice(6)
-            self.pts_adjustment = self.time_90k(bs.slice(33))
-            self.cw_index = bs.hexed(8)
-            self.tier = bs.hexed(12)
-            self.splice_command_length = bs.slice(12)
-            self.splice_command_type = bs.slice(8)
+            self.table_id =bs.ashex(8)
+            self.section_syntax_indicator = bs.asflag(1)
+            self.private = bs.asflag(1)
+            self.reserved=bs.asint(2)
+            self.section_length = bs.asint(12)
+            self.protocol_version = bs.asint(8)
+            self.encrypted_packet =  bs.asflag(1)
+            self.encryption_algorithm =bs.asint(6)
+            self.pts_adjustment = self.time_90k(bs.asint(33))
+            self.cw_index = bs.ashex(8)
+            self.tier = bs.ashex(12)
+            self.splice_command_length = bs.asint(12)
+            self.splice_command_type = bs.asint(8)
                
         def time_90k(k):
             t= k/90000.0    
             return f'{t :.6f}'
 
 
->>> bs=BitSlicer9k(bites)
+>>> bs=Slicer9k(bites)
 
 >>> sps=Splice_Info_Section(bs)
 
