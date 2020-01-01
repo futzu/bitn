@@ -22,6 +22,13 @@ class Slicer9k:
         '''
         return hex(self.asint(num_bits))
         
+    def asdecodedhex(self,num_bits):
+        '''
+        return decoded hex of a bitslice
+        '''
+        k= self.asint(num_bits)
+        return bytearray.fromhex(hex(k)[2:]).decode()   
+        
     def asflag(self,num_bits=1):
         '''
         returns one bit as True or False
