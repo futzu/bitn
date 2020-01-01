@@ -2,7 +2,7 @@
 * Super fast bitslicing. 
 * bitshift speed without bitwise complexity.
 
-#### I used to do this
+ I used to do this
 ```python3
    from struct import unpack
      
@@ -15,7 +15,7 @@
     afc = (one_byte & 48) >> 4
     count = one_byte & 15
 ```
-#### Now I use bitslicer9k and do this
+ Now I use bitslicer9k and do this
 ```python3
     from bitslicer9k import Slicer9k
     
@@ -95,10 +95,7 @@ class Slicer9k(builtins.object)
 >>> sps=Splice_Info_Section(bs)
 
 >>> vars(sps)
-{'table_id': '0xfc', 'section_syntax_indicator': False, 'private': False, 'reserved': 3, 
-'section_length': 47, 'protocol_version': 0, 'encrypted_packet': False, 'encryption_algorithm': 0, 
-'pts_adjustment': '0.000000', 'cw_index': '0xff', 'tier': '0xfff', 'splice_command_length': 5, 
-'splice_command_type': 6}
+{'table_id': '0xfc', 'section_syntax_indicator': False, 'private': False, 'reserved': 3, 'section_length': 47, 'protocol_version': 0, 'encrypted_packet': False, 'encryption_algorithm': 0, 'pts_adjustment': '0.000000', 'cw_index': '0xff', 'tier': '0xfff', 'splice_command_length': 5, 'splice_command_type': 6, 'descriptor_loop_length': 25, 'crc': '0xc4876a2e'}
 
 >>> 
 
