@@ -2,6 +2,43 @@
 * Super fast bitslicing. 
 * bitshift speed without bitwise complexity.
 
+#### Install
+```python3
+pip install bitslicer9k
+```
+
+#### Help(Slicer9k)
+```
+Help on class Slicer9k in module bitslicer9k:
+
+class Slicer9k(builtins.object)
+ |  Slicer9k(bites)
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, bites)
+ |      From bytes to bits
+ |  
+ |  as90k(self, num_bits)
+ |      return bitslice as 90k time
+ |  
+ |  asdecodedhex(self, num_bits)
+ |      return decoded hex of a bitslice
+ |  
+ |  asflag(self, num_bits=1)
+ |      returns one bit as True or False
+ |  
+ |  ashex(self, num_bits)
+ |      return the hex value of a bitslice
+ |  
+ |  asint(self, num_bits)
+ |      Starting at self.idx of self.bits, slice off num_bits of bits.
+ |  
+ |  ----------------------------------------------------------------------
+
+```
+
+
  I used to do this
 ```python3
    from struct import unpack
@@ -28,37 +65,6 @@
     scramble=header.asint(2)
     afc=header.asint(2)
     count=header.asint(4)
-```
-#### Install
-```python3
-pip install bitslicer9k
-```
-
-#### Help(Slicer9k)
-```
-Help on class Slicer9k in module bitslicer9k:
-
-class Slicer9k(builtins.object)
- |  Slicer9k(bites)
- |  
- |  Methods defined here:
- |  
- |  __init__(self, bites)
- |      From bytes to bits
- |  
- |  as90k(self, num_bits)
- |      return bitslice as 90k time
- |  
- |  asflag(self, num_bits=1)
- |      returns one bit as True or False
- |  
- |  ashex(self, num_bits)
- |      return the hex value of a bitslice
- |  
- |  asint(self, num_bits)
- |      Starting at self.idx of self.bits, slice off num_bits of bits.
- |  
- |  ----------------------------------------------------------------------
 ```
 
 #### Example Usage
