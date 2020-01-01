@@ -28,3 +28,10 @@ class Slicer9k:
         '''
         return  self.asint(num_bits) ==1
 
+
+    def as90k(self,num_bits):
+        '''
+        return bitslice as 90k time
+        ''' 
+    
+        return f'{ (self.asint(num_bits)/90000):.6f}'
