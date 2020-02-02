@@ -1,18 +1,18 @@
-# Bit Slicer 9k
+# bitn.BitBin
 * Super fast bitslicing. 
 * bitshift speed without bitwise complexity.
 
 #### Install
 ```python3
-pip install bitslicer9k
+pip install bitn
 ```
 
-#### Help(Slicer9k)
+#### Help(BitBin)
 ```
-Help on class Slicer9k in module bitslicer9k:
+Help on class BitBin in module bitn:
 
-class Slicer9k(builtins.object)
- |  Slicer9k(bites)
+class BitBin(builtins.object)
+ |  BitBin(bites)
  |  
  |  Methods defined here:
  |  
@@ -52,11 +52,11 @@ class Slicer9k(builtins.object)
     afc = (one_byte & 48) >> 4
     count = one_byte & 15
 ```
- Now I use bitslicer9k and do this
+ Now I use bitn and do this
 ```python3
-    from bitslicer9k import Slicer9k
+    from bitn import BitBin
     
-    header= Slicer9k(packet[:4])
+    header= BitBin(packet[:4])
     sync=header.asint(8)
     tei=header.asflag(1)
     pusi=header.asflag(1)
@@ -72,30 +72,30 @@ class Slicer9k(builtins.object)
 
 ```python3
 
->>> from bitslicer9k import Slicer9k   
+>>> from bitn import BitBin   
     
 
 >>> bites= bytes.fromhex( 'FC302F000000000000FFFFF00506FEAEF17C4C0019021743554549480000077F9F0808000000002CA56C97110000C4876A2E')
 
 
 >>> class Splice_Info_Section:    
-        def __init__(self,bs):
-            self.table_id =bs.ashex(8)
-            self.section_syntax_indicator = bs.asflag(1)
-            self.private = bs.asflag(1)
-            self.reserved=bs.asint(2)
-            self.section_length = bs.asint(12)
-            self.protocol_version = bs.asint(8)
-            self.encrypted_packet =  bs.asflag(1)
-            self.encryption_algorithm =bs.asint(6)
-            self.pts_adjustment = bs.as90k(33)
-            self.cw_index = bs.ashex(8)
-            self.tier = bs.ashex(12)
-            self.splice_command_length = bs.asint(12)
-            self.splice_command_type = bs.asint(8)
+        def __init__(self,bb):
+            self.table_id =bb.ashex(8)
+            self.section_syntax_indicator = bb.asflag(1)
+            self.private = bb.asflag(1)
+            self.reserved=bb.asint(2)
+            self.section_length = bb.asint(12)
+            self.protocol_version = bb.asint(8)
+            self.encrypted_packet =  bb.asflag(1)
+            self.encryption_algorithm =bb.asint(6)
+            self.pts_adjustment = bb.as90k(33)
+            self.cw_index = bb.ashex(8)
+            self.tier = bb.ashex(12)
+            self.splice_command_length = bb.asint(12)
+            self.splice_command_type = bb.asint(8)
       
 
->>> bs=Slicer9k(bites)
+>>> bb=BitBin(bites)
 
 >>> sps=Splice_Info_Section(bs)
 
@@ -108,3 +108,4 @@ class Slicer9k(builtins.object)
 >>> 
 
 ```
+
