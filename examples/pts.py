@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from bitslicer9k import Slicer9k
+from bitn import BitBin
 import sys
 
 PACKET_SIZE=188
@@ -20,7 +20,7 @@ def parse_tsfile(tsfile):
             else: return 
 
 def parse_tspacket(packet,packetnum):
-    three_bytes=Slicer9k(packet[:3])
+    three_bytes=BitBin(packet[:3])
     tei=three_bytes.asflag(1)
     pusi=three_bytes.asflag(1)
     ts_priority=three_bytes.asflag(1)
@@ -28,19 +28,19 @@ def parse_tspacket(packet,packetnum):
     if pusi: parse_pes(packet,packetnum)
 
 def parse_pes(packet,packetnum): 
-    bs=Slicer9k(packet[3:])
-    if bs.asint(24)==1 and bs.asint(8) not in NON_PTS_STREAM_IDS :
-        PES_packet_length=bs.asint(16)
-        if bs.asint(2)==2:
-            bs.asint(6)
-            if bs.asint(2) in[2,3]:
-                bs.asint(14)
-                if bs.asint(4) in[2,3]:
-                    to33=bs.asint(3)<<30
+    bb=BitBin(packet[3:])
+    if bb.asint(24)==1 and bb.asint(8) not in NON_PTS_STREAM_IDS :
+        PES_packet_length=bb.asint(16)
+        if bb.asint(2)==2:
+            bb.asint(6)
+            if bb.asint(2) in[2,3]:
+                bb.asint(14)
+                if bb.asint(4) in[2,3]:
+                    to33=bb.asint(3)<<30
+                    bb.asflag(1)
+                    to30=bb.asint(15) << 15
                     bs.asflag(1)
-                    to30=bs.asint(15) << 15
-                    bs.asflag(1)
-                    to15=bs.asint(15)
+                    to15=bb.asint(15)
                     d=to33+to30+to15
                     print(f' PTS {d/90000:.6f} on Packet {packetnum}')
 
