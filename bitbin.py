@@ -1,4 +1,4 @@
-class Slicer9k:
+class BitBin:
     def __init__(self,bites):
         '''
         From bytes to bits
