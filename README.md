@@ -82,27 +82,26 @@ class BitBin(builtins.object)
 
 >>> bites= bytes.fromhex( 'FC302F000000000000FFFFF00506FEAEF17C4C0019021743554549480000077F9F0808000000002CA56C97110000C4876A2E')
 
-
 >>> class Splice_Info_Section:    
-        def __init__(self,bb):
-            self.table_id =bb.ashex(8)
-            self.section_syntax_indicator = bb.asflag(1)
-            self.private = bb.asflag(1)
-            self.reserved=bb.asint(2)
-            self.section_length = bb.asint(12)
-            self.protocol_version = bb.asint(8)
-            self.encrypted_packet =  bb.asflag(1)
-            self.encryption_algorithm =bb.asint(6)
-            self.pts_adjustment = bb.as90k(33)
-            self.cw_index = bb.ashex(8)
-            self.tier = bb.ashex(12)
-            self.splice_command_length = bb.asint(12)
-            self.splice_command_type = bb.asint(8)
+        def __init__(self,bitbin):
+            self.table_id =bitbin.ashex(8)
+            self.section_syntax_indicator = bitbin.asflag(1)
+            self.private = bitbin.asflag(1)
+            self.reserved=bitbin.asint(2)
+            self.section_length = bitbin.asint(12)
+            self.protocol_version = bitbin.asint(8)
+            self.encrypted_packet =  bitbin.asflag(1)
+            self.encryption_algorithm =bitbin.asint(6)
+            self.pts_adjustment = bitbin.as90k(33)
+            self.cw_index = bitbin.ashex(8)
+            self.tier = bitbin.ashex(12)
+            self.splice_command_length = bitbin.asint(12)
+            self.splice_command_type = bitbin.asint(8)
       
 
->>> bb=BitBin(bites)
+>>> bitbin=BitBin(bites)
 
->>> sps=Splice_Info_Section(bs)
+>>> sps=Splice_Info_Section(bitbin)
 
 >>> vars(sps)
 
