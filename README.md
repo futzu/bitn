@@ -2,6 +2,11 @@
 * Super fast bitslicing. 
 * bitshift speed without bitwise complexity.
 
+#### Reviews
+
+*Damn son, this is good.* ~ **Leroy Scandal**
+.
+
 #### Install
 ```python3
 pip install bitn
