@@ -42,17 +42,6 @@ class BitBin(builtins.object)
  |  asint(self, num_bits)
  |      Starting at self.idx of self.bits, 
  |      slice off num_bits of bits.
- |   
- |  asflag(self, num_bits=1)
- |      Returns one bit as True or False
- |  
- |  ashex(self, num_bits)
- |      Returns the hex value 
- |      of num_bits of bits
- |  
- |  asint(self, num_bits)
- |      Starting at self.idx of self.bits, 
- |      slice off num_bits of bits.
  |  
  |  forward(self, num_bits)
  |      Advances the start point 
