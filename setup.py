@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bitn",
-    version="0.0.03",
+    version="0.0.05",
     author="fu-corp",
     author_email="spam@futzu.com",
-    description="Super Fast Bit Slicer",
+    description="Fast Bitwise for Mpegts Parsing. ",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/futzu/bitn",
