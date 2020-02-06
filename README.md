@@ -25,20 +25,42 @@ class BitBin(builtins.object)
  |      From bytes to bits
  |  
  |  as90k(self, num_bits)
- |      return bitslice as 90k time
+ |      Returns num_bits 
+ |      of bits as 90k time
  |  
  |  asdecodedhex(self, num_bits)
- |      return decoded hex of a bitslice
+ |      Returns num_bits of bits 
+ |      from hex decoded to bytes
  |  
  |  asflag(self, num_bits=1)
- |      returns one bit as True or False
+ |      Returns one bit as True or False
  |  
  |  ashex(self, num_bits)
- |      return the hex value of a bitslice
+ |      Returns the hex value 
+ |      of num_bits of bits
  |  
  |  asint(self, num_bits)
- |      Starting at self.idx of self.bits, slice off num_bits of bits.
+ |      Starting at self.idx of self.bits, 
+ |      slice off num_bits of bits.
+ |   
+ |  asflag(self, num_bits=1)
+ |      Returns one bit as True or False
  |  
+ |  ashex(self, num_bits)
+ |      Returns the hex value 
+ |      of num_bits of bits
+ |  
+ |  asint(self, num_bits)
+ |      Starting at self.idx of self.bits, 
+ |      slice off num_bits of bits.
+ |  
+ |  forward(self, num_bits)
+ |      Advances the start point 
+ |      forward by num_bits
+ |  
+ |  rewind(self, numbits)
+ |      Rewinds the start point 
+ |      back by num_bits  
  |  ----------------------------------------------------------------------
 
 ```
