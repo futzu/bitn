@@ -65,7 +65,4 @@ class BitBin:
         back by num_bits
         '''
         self.idx +=num_bits
-        return bitslice as 90k time
-        ''' 
-    
-        return f'{ (self.asint(num_bits)/90000):.6f}'
+       
