@@ -5,7 +5,7 @@ class BitBin:
         '''
         if not isinstance(bites,bytes):
             raise TypeError('bites needs to be type bytes')
-        self.idx=(len(bites)*8)
+        self.bitsize = self.idx = (len(bites)*8)
         self.bits=int.from_bytes(bites,byteorder='big')
 
 
@@ -22,6 +22,8 @@ class BitBin:
         Starting at self.idx of self.bits, 
         slice off num_bits of bits.
         ''' 
+        if num_bits > self.idx:
+            raise ValueError(f'reading {num_bits - self.idx} bits too many') 
         bitslice= (self.bits >> (self.idx-num_bits)) & ~(~0 << num_bits)
         self.forward(num_bits)
         return bitslice 
@@ -48,7 +50,7 @@ class BitBin:
         '''
         Returns one bit as True or False
         '''
-        return  self.asint(num_bits) ==1
+        return  self.asint(num_bits) == 1
 
 
     def forward(self,num_bits):
@@ -56,7 +58,9 @@ class BitBin:
         Advances the start point 
         forward by num_bits
         '''
-        self.idx -=num_bits
+        self.idx -= num_bits
+        if self.idx < 0:
+            self.idx = 0
         
         
     def rewind(self,num_bits):
@@ -64,5 +68,7 @@ class BitBin:
         Rewinds the start point 
         back by num_bits
         '''
-        self.idx +=num_bits
+        self.idx += num_bits
+        if self.idx > self.bitsize:
+            self.idx = self.bitsize
        
