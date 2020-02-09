@@ -59,7 +59,7 @@ class BitBin:
         self.idx -=num_bits
         
         
-    def rewind(self,numbits):
+    def rewind(self,num_bits):
         '''
         Rewinds the start point 
         back by num_bits
