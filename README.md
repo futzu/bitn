@@ -47,7 +47,7 @@ class BitBin(builtins.object)
  |      Advances the start point 
  |      forward by num_bits
  |  
- |  rewind(self, numbits)
+ |  rewind(self, num_bits)
  |      Rewinds the start point 
  |      back by num_bits  
  |  ----------------------------------------------------------------------
