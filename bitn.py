@@ -20,8 +20,11 @@ class BitBin:
         Starting at self.idx of self.bits, 
         slice off num_bits of bits.
         ''' 
-        self.idx =  self.idx-num_bits
-        return (self.bits >> (self.idx)) & ~(~0 << num_bits)
+        if num_bits > self.idx:
+            raise ValueError(f'reading {num_bits - self.idx} bits too many')
+        else:
+            self.idx =  self.idx-num_bits
+            return (self.bits >> (self.idx)) & ~(~0 << num_bits)
              
     def ashex(self,num_bits):
         '''
