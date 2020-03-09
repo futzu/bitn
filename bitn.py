@@ -6,7 +6,7 @@ class BitBin:
         lb=len(bites) << 3
         self.bitsize =  lb
         self.idx = lb
-        self.bits=int.from_bytes(bites,byteorder='big')
+        self.bits = int.from_bytes(bites,byteorder='big')
 
     def as90k(self,num_bits):
         '''
@@ -43,7 +43,8 @@ class BitBin:
         '''
         Returns one bit as True or False
         '''
-        return  self.asint(num_bits) is 1
+        self.idx -= num_bits
+        return  (self.bits >> self.idx) & 1 == 1
 
     def forward(self,num_bits):
         '''
