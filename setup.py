@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.21",
     author="fu-corp",
     author_email="spam@futzu.com",
-    description="Fast Bitwise Bit Slicing.",
+    description="Faster Bitwise Bit Slicing.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/futzu/bitn",
