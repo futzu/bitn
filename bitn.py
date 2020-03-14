@@ -1,12 +1,24 @@
 class BitBin:
-    def __init__(self,bites):
+    def __init__(self,bites=None):
+        '''
+        __init__  calls load(), 
+        so an instance can be 
+        reloaded and reused.
+        '''
+        self.load(bites)
+     
+    def load(self,bites=None):
         '''
         From bytes to bits.
         '''
-        lb=len(bites) << 3
-        self.bitsize =  lb
-        self.idx = lb
-        self.bits = int.from_bytes(bites,byteorder='big')
+        self.bitsize=0
+        self.idx=0
+        self.bits=False
+        if bites:
+            lb=len(bites) << 3
+            self.bitsize =  lb
+            self.idx = lb
+            self.bits = int.from_bytes(bites,byteorder='big')
 
     def as90k(self,num_bits):
         '''
