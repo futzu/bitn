@@ -17,12 +17,14 @@ pip install bitn
 Help on class BitBin in module bitn:
 
 class BitBin(builtins.object)
- |  BitBin(bites)
+ |  BitBin(bites=None)
  |  
  |  Methods defined here:
  |  
- |  __init__(self, bites)
- |      From bytes to bits
+ |  __init__(self, bites=None)
+ |      __init__  calls load(), 
+ |      so an instance can be 
+ |      reloaded and reused.
  |  
  |  as90k(self, num_bits)
  |      Returns num_bits 
@@ -34,7 +36,7 @@ class BitBin(builtins.object)
  |  
  |  asflag(self, num_bits=1)
  |      Returns one bit as True or False
- |  
+ |
  |  ashex(self, num_bits)
  |      Returns the hex value 
  |      of num_bits of bits
@@ -47,11 +49,14 @@ class BitBin(builtins.object)
  |      Advances the start point 
  |      forward by num_bits
  |  
+ |  load(self, bites=None)
+ |      From bytes to bits.
+ |  
  |  rewind(self, num_bits)
  |      Rewinds the start point 
- |      back by num_bits  
+ |      back by num_bits
+ |  
  |  ----------------------------------------------------------------------
-
 ```
 
 
