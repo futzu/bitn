@@ -26,7 +26,7 @@ class BitBin:
         of bits as 90k time
         '''
         t = (self.asint(num_bits)/90000.00)
-        return f'{t:.06f}'
+        return round(t,6)
           
     def asint(self,num_bits):
         '''

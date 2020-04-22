@@ -5,15 +5,15 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bitn",
-    version="0.0.23",
+    version="0.0.25",
     author="fu-corp",
     author_email="spam@futzu.com",
     description="Bitwise Bit Slicing.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/futzu/bitn",
-    #packages=setuptools.find_packages(),
-    py_modules=['bitn'],
+    packages=setuptools.find_packages(),
+    #py_modules=['bitn'],
      platforms='all',
     classifiers=[
         "Programming Language :: Python :: 3",
