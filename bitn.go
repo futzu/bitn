@@ -1,4 +1,4 @@
-package gobit
+package bitn
 
 import (
 	"encoding/hex"
