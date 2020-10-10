@@ -1,24 +1,7 @@
 class BitBin:
-    def __init__(self,bites=None):
-        '''
-        __init__  calls load(), 
-        so an instance can be 
-        reloaded and reused.
-        '''
-        self.load(bites)
-     
-    def load(self,bites=None):
-        '''
-        From bytes to bits.
-        '''
-        self.bitsize=0
-        self.idx=0
-        self.bits=False
-        if bites:
-            lb=len(bites) << 3
-            self.bitsize =  lb
-            self.idx = lb
-            self.bits = int.from_bytes(bites,byteorder='big')
+    def __init__(self,bites):
+        self.bitsize = self.idx = len(bites) << 3
+        self.bits = int.from_bytes(bites,byteorder='big')
 
     def as90k(self,num_bits):
         '''
@@ -33,7 +16,7 @@ class BitBin:
         Starting at self.idx of self.bits, 
         slice off num_bits of bits.
         ''' 
-        self.idx =  self.idx-num_bits
+        self.idx -= num_bits
         return (self.bits >> (self.idx)) & ~(~0 << num_bits)
              
     def ashex(self,num_bits):
@@ -55,8 +38,7 @@ class BitBin:
         '''
         Returns one bit as True or False
         '''
-        self.idx -= num_bits
-        return  (self.bits >> self.idx) & 1 == 1
+        return self.asint(num_bits) & 1 == 1
 
     def forward(self,num_bits):
         '''
@@ -64,12 +46,3 @@ class BitBin:
         forward by num_bits
         '''
         self.idx -= num_bits
-                
-    def rewind(self,num_bits):
-        '''
-        Rewinds the start point 
-        back by num_bits
-        '''  
-        self.idx += num_bits
-        if self.idx > self.bitsize:
-            self.idx = self.bitsize
