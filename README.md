@@ -14,49 +14,45 @@ pip install bitn
 
 #### Help(BitBin)
 ```
-Help on class BitBin in module bitn:
+Help on module bitn:
 
-class BitBin(builtins.object)
- |  BitBin(bites=None)
- |  
- |  Methods defined here:
- |  
- |  __init__(self, bites=None)
- |      __init__  calls load(), 
- |      so an instance can be 
- |      reloaded and reused.
- |  
- |  as90k(self, num_bits)
- |      Returns num_bits 
- |      of bits as 90k time
- |  
- |  asdecodedhex(self, num_bits)
- |      Returns num_bits of bits 
- |      from hex decoded to bytes
- |  
- |  asflag(self, num_bits=1)
- |      Returns one bit as True or False
- |
- |  ashex(self, num_bits)
- |      Returns the hex value 
- |      of num_bits of bits
- |  
- |  asint(self, num_bits)
- |      Starting at self.idx of self.bits, 
- |      slice off num_bits of bits.
- |  
- |  forward(self, num_bits)
- |      Advances the start point 
- |      forward by num_bits
- |  
- |  load(self, bites=None)
- |      From bytes to bits.
- |  
- |  rewind(self, num_bits)
- |      Rewinds the start point 
- |      back by num_bits
- |  
- |  ----------------------------------------------------------------------
+NAME
+    bitn
+
+CLASSES
+    builtins.object
+        BitBin
+    
+    class BitBin(builtins.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self, bites)
+     |  
+     |  as90k(self, num_bits)
+     |      Returns num_bits 
+     |      of bits as 90k time
+     |  
+     |  asdecodedhex(self, num_bits)
+     |      Returns num_bits of bits 
+     |      from hex decoded to bytes
+     |  
+     |  asflag(self, num_bits=1)
+     |      Returns one bit as True or False
+     |  
+     |  ashex(self, num_bits)
+     |      Returns the hex value 
+     |      of num_bits of bits
+     |  
+     |  asint(self, num_bits)
+     |      Starting at self.idx of self.bits, 
+     |      slice off num_bits of bits.
+     |  
+     |  forward(self, num_bits)
+     |      Advances the start point 
+     |      forward by num_bits
+     |  
+     |  --------------------------------------------------------------------
+
 ```
 
 
