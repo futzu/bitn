@@ -19,7 +19,7 @@ class BitBin:
         self.idx -= num_bits
         return (self.bits >> (self.idx)) & ~(~0 << num_bits)
 
-    def ashex(self,num_bits):
+    def ashex(self, num_bits):
         '''
         Returns the hex value
         of num_bits of bits
