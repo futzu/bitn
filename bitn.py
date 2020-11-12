@@ -1,4 +1,10 @@
 class BitBin:
+    '''
+    bitn.Bitbin takes a byte string and
+    converts it to a integer, a very large integer
+    if needed. A 1500 bit integer is no problem.
+    several methods are available for slicing off bits.
+    '''
     def __init__(self, bites):
         self.bitsize = self.idx = len(bites) << 3
         self.bits = int.from_bytes(bites, byteorder='big')
@@ -8,8 +14,8 @@ class BitBin:
         Returns num_bits
         of bits as 90k time
         '''
-        t = (self.asint(num_bits)/90000.00)
-        return round(t, 6)
+        ninetyk = (self.asint(num_bits)/90000.00)
+        return round(ninetyk, 6)
 
     def asint(self, num_bits):
         '''
