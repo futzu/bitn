@@ -2,10 +2,6 @@
 * Super fast bitslicing. 
 * bitshift speed without bitwise complexity.
 
-#### Reviews
-
-*Damn son, this is good.* ~ **Leroy Scandal**
-.
 
 #### Install
 ```python3
@@ -14,7 +10,7 @@ pip install bitn
 
 #### Help(BitBin)
 ```
-Help on module bitn:
+elp on module bitn:
 
 NAME
     bitn
@@ -24,34 +20,53 @@ CLASSES
         BitBin
     
     class BitBin(builtins.object)
+     |  bitn.Bitbin takes a byte string and
+     |  converts it to a integer, a very large integer
+     |  if needed. A 1500 bit integer is no problem.
+     |  several methods are available for slicing off bits.
+     |  
      |  Methods defined here:
      |  
      |  __init__(self, bites)
      |  
      |  as90k(self, num_bits)
-     |      Returns num_bits 
+     |      Returns num_bits
      |      of bits as 90k time
      |  
      |  asdecodedhex(self, num_bits)
-     |      Returns num_bits of bits 
+     |      Returns num_bits of bits
      |      from hex decoded to bytes
      |  
      |  asflag(self, num_bits=1)
      |      Returns one bit as True or False
-     |  
+    |  
      |  ashex(self, num_bits)
-     |      Returns the hex value 
+     |      Returns the hex value
      |      of num_bits of bits
      |  
      |  asint(self, num_bits)
-     |      Starting at self.idx of self.bits, 
+     |      Starting at self.idx of self.bits,
      |      slice off num_bits of bits.
      |  
      |  forward(self, num_bits)
-     |      Advances the start point 
+     |      Advances the start point
      |      forward by num_bits
      |  
-     |  --------------------------------------------------------------------
+     |  negative_shift(self, num_bits)
+     |      negative_shift is called instead of
+     |      throwing a negative shift count error.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    /home/a/SCTE35-threefive/bitn.py
 
 ```
 
@@ -92,9 +107,10 @@ CLASSES
 >>> from bitn import BitBin   
     
 
->>> bites= bytes.fromhex( 'FC302F000000000000FFFFF00506FEAEF17C4C0019021743554549480000077F9F0808000000002CA56C97110000C4876A2E')
+>>> bites= bytes.fromhex('FC302F000000000000FFFFF00506FEAEF17C4C0019021743554549480000077F9F0808000000002CA56C97110000C4876A2E')
 
->>> class Splice_Info_Section:    
+>>> class Splice_Info_Section:
+
         def __init__(self,bitbin):
             self.table_id =bitbin.ashex(8)
             self.section_syntax_indicator = bitbin.asflag(1)
