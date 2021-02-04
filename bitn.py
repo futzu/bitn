@@ -87,8 +87,8 @@ class NBin:
 
     def __init__(self):
         self.nbits = 0
-        self.idx =0
-        self.bites = b''
+        self.idx = 0
+        self.bites = b""
 
     def nbits2bites(self):
         """
@@ -96,38 +96,43 @@ class NBin:
         the int self.nbits to bytes as self.bites
         and sets self.nbits  and self.idx to 0
         """
-        bites_wide = (self.idx >> 3)
-        self.bites +=(int.to_bytes(self.nbits, bites_wide, byteorder="big"))
+        bites_wide = self.idx >> 3
+        self.bites += int.to_bytes(self.nbits, bites_wide, byteorder="big")
+        # print(self.bites)
         self.nbits = 0
         self.idx = 0
 
-    def add_int(self,int_bits,bit_len):
+    def add_bites(self, plus_bites, bit_len):
+        self.bites += plus_bites
+        self.nbits2bites()
+
+    def add_int(self, int_bits, bit_len):
         """
         left shift nbits and append new_bits
         """
         self.idx += bit_len
-        self.nbits  = (self.nbits <<bit_len) | int_bits
+        self.nbits = (self.nbits << bit_len) | int_bits
         if self.idx % 8 == 0:
             self.nbits2bites()
 
-    def add_90k(self, pts,bit_len = 33):
+    def add_90k(self, pts, bit_len=33):
         """
         Converts 90k  float timestamps
         to an int and appends it to nbits
         via self.add_int
         """
         ninetyk = int(pts * 90000)
-        self.add_int(ninetyk,bit_len)
+        self.add_int(ninetyk, bit_len)
 
-    def add_hex(self, hex_str,bit_len):
+    def add_hex(self, hex_str, bit_len):
         """
         add_hex converts a
         hex encoded string to an int
         and appends it to self.nbits
         via self.add_int
         """
-        dehexed = int(hex_str,16)
-        self.add_int(dehexed,bit_len)
+        dehexed = int(hex_str, 16)
+        self.add_int(dehexed, bit_len)
 
     def add_flag(self, flg):
         """
@@ -145,9 +150,9 @@ class NBin:
         via self.add_int
         """
         bit_len = 1
-        while num :
-            self.add_int(1,bit_len)
-            num -=1
+        while num:
+            self.add_int(1, bit_len)
+            num -= 1
 
     def forward(self, num):
         """
