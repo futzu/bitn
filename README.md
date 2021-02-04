@@ -1,7 +1,9 @@
 # bitn.BitBin
 * Super fast bitslicing. 
 * bitshift speed without bitwise complexity.
-
+# bitn.NBin    (__New!__)
+* the __reverse__ bitn.BitBin
+* Encodes values to bytes
 
 #### Install
 ```python3
@@ -10,14 +12,13 @@ pip install bitn
 
 #### Help(BitBin)
 ```
-elp on module bitn:
-
 NAME
     bitn
 
 CLASSES
     builtins.object
         BitBin
+        NBin
     
     class BitBin(builtins.object)
      |  bitn.Bitbin takes a byte string and
@@ -39,7 +40,7 @@ CLASSES
      |  
      |  asflag(self, num_bits=1)
      |      Returns one bit as True or False
-    |  
+     |  
      |  ashex(self, num_bits)
      |      Returns the hex value
      |      of num_bits of bits
@@ -57,16 +58,52 @@ CLASSES
      |      throwing a negative shift count error.
      |  
      |  ----------------------------------------------------------------------
-     |  Data descriptors defined here:
+    
+    
+    class NBin(builtins.object)
+     |  bitn.NBin is
+     |  the reverse BitBin.
+     |  Encodes data to integers
+     |  and then bytes
      |  
-     |  __dict__
-     |      dictionary for instance variables (if defined)
+     |  Methods defined here:
      |  
-     |  __weakref__
-     |      list of weak references to the object (if defined)
+     |  __init__(self)
+     |  
+     |  add_90k(self, pts, bit_len=33)
+         |      Converts 90k  float timestamps
+     |      to an int and appends it to nbits
+     |      via self.add_int
+     |  
+     |  add_flag(self, flg)
+     |      add_flag takes a boolean
+     |      value and adds it as an integer
+     |      to self.nbits via self.add_int
+     |  
+     |  add_hex(self, hex_str, bit_len)
+     |      add_hex converts a
+     |      hex encoded string to an int
+     |      and appends it to self.nbits
+     |      via self.add_int
+     |  
+     |  add_int(self, int_bits, bit_len)
+     |      left shift nbits and append new_bits
+     |  
+     |  forward(self, num)
+     |      Currently just an alias to reserve
+     |  
+     |  nbits2bites(self)
+     |      nbits2bites converts
+     |      the int self.nbits to bytes as self.bites
+     |      and sets self.nbits  and self.idx to 0
+     |  
+     |  reserve(self, num)
+     |      reserve sets 'num'  bits to 1
+     |      and appends them to self.nbits
+     |      via self.add_int
+     |  
+     |  ----------------------------------------------------------------------
 
-FILE
-    /home/a/SCTE35-threefive/bitn.py
 
 ```
 
