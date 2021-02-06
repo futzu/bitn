@@ -40,13 +40,24 @@ class BitBin:
         """
         return hex(self.asint(num_bits))
 
-    def asdecodedhex(self, num_bits):
+    def asbites(self, num_bits):
         """
-        Returns num_bits of bits
-        from hex decoded to bytes
+        Returns num_bits
+        of bits as bytes
         """
         k = self.asint(num_bits)
-        return bytearray.fromhex(hex(k)[2:]).decode()
+        nibbles = int(num_bits / 4)
+        return bytearray.fromhex(f"{k:0{nibbles}x}")
+
+    def astext(self, num_bits, stop_at_null=True, encoding="latin-1", errors="strict"):
+        """
+        Returns num_bits
+        of bits as text
+        """
+        text = self.asbites(num_bits).decode(encoding, errors)
+        if stop_at_null:
+            return text.split("\0")[0]
+        return text
 
     def asflag(self, num_bits=1):
         """
