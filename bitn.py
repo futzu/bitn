@@ -19,8 +19,8 @@ class BitBin:
         Returns num_bits
         of bits as 90k time
         """
-        ninetyk = self.asint(num_bits) / 90000.00
-        return round(ninetyk, 6)
+        ninetyk = self.asint(num_bits) / 90000.0
+        return round(ninetyk,6)
 
     def asint(self, num_bits):
         """
@@ -74,9 +74,6 @@ class BitBin:
         sys.exit()
 
 
-import sys
-
-
 class NBin:
     """
     bitn.NBin is
@@ -121,7 +118,7 @@ class NBin:
         to an int and appends it to nbits
         via self.add_int
         """
-        ninetyk = int(pts * 90000)
+        ninetyk = int(pts * 90000.0)
         self.add_int(ninetyk, bit_len)
 
     def add_hex(self, hex_str, bit_len):
@@ -134,13 +131,13 @@ class NBin:
         dehexed = int(hex_str, 16)
         self.add_int(dehexed, bit_len)
 
-    def add_flag(self, flg):
+    def add_flag(self, flg, bit_len=1):
         """
         add_flag takes a boolean
         value and adds it as an integer
         to self.nbits via self.add_int
         """
-        bit_len = 1
+        bit_len =1
         self.add_int(flg.real, bit_len)
 
     def reserve(self, num):
@@ -159,3 +156,11 @@ class NBin:
         Currently just an alias to reserve
         """
         self.reserve(num)
+
+    def zeroed(self,num):
+        """
+        zeroed sets num bits to zero
+        """
+        bit_len = 1
+        while num:
+            self.add_int(0,bit_len)
