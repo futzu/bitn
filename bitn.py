@@ -20,7 +20,7 @@ class BitBin:
         of bits as 90k time
         """
         ninetyk = self.asint(num_bits) / 90000.0
-        return round(ninetyk,6)
+        return round(ninetyk, 6)
 
     def asint(self, num_bits):
         """
@@ -137,7 +137,7 @@ class NBin:
         value and adds it as an integer
         to self.nbits via self.add_int
         """
-        bit_len =1
+        bit_len = 1
         self.add_int(flg.real, bit_len)
 
     def reserve(self, num):
@@ -157,10 +157,10 @@ class NBin:
         """
         self.reserve(num)
 
-    def zeroed(self,num):
+    def zeroed(self, num):
         """
         zeroed sets num bits to zero
         """
         bit_len = 1
         while num:
-            self.add_int(0,bit_len)
+            self.add_int(0, bit_len)
