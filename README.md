@@ -34,9 +34,9 @@ CLASSES
      |      Returns num_bits
      |      of bits as 90k time
      |  
-     |  asdecodedhex(self, num_bits)
-     |      Returns num_bits of bits
-     |      from hex decoded to bytes
+     |  asascii(self, num_bits)
+     |      Returns num_bits
+     |      as bytes decoded to ascii
      |  
      |  asflag(self, num_bits=1)
      |      Returns one bit as True or False
