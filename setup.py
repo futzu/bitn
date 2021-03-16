@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bitn",
-    version="0.0.39",
+    version="0.0.41",
     author="fu-corp",
     author_email="spam@futzu.com",
     description="Bitwise Bit Slicing.",

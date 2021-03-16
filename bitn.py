@@ -10,7 +10,7 @@ class BitBin:
     """
 
     def __init__(self, bites):
-        self.bites = bites
+        #self.bites = bites
         self.bitsize = self.idx = len(bites) << 3
         self.bits = int.from_bytes(bites, byteorder="big")
 
@@ -40,13 +40,14 @@ class BitBin:
         """
         return hex(self.asint(num_bits))
 
-    def asdecodedhex(self, num_bits):
+    def asascii(self, num_bits):
         """
         Returns num_bits of bits
         from hex decoded to bytes
         """
         k = self.asint(num_bits)
-        return bytearray.fromhex(hex(k)[2:]).decode()
+        w = (num_bits >> 3)
+        return int.to_bytes(k, w, byteorder="big").decode("utf-8")
 
     def asflag(self, num_bits=1):
         """
@@ -70,8 +71,8 @@ class BitBin:
             f"{num_bits} bits requested, but only {self.idx} bits left.",
             file=sys.stderr,
         )
-        print(f"self.bites:\n{self.bites}", file=sys.stderr)
-        sys.exit()
+     #   print(f"self.bites:\n{self.bites}", file=sys.stderr)
+     #   sys.exit()
 
 
 class NBin:
