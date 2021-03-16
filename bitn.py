@@ -43,7 +43,7 @@ class BitBin:
     def asascii(self, num_bits):
         """
         Returns num_bits of bits
-        from hex decoded to bytes
+        as bytes decoded to ascii
         """
         k = self.asint(num_bits)
         w = (num_bits >> 3)
@@ -71,8 +71,6 @@ class BitBin:
             f"{num_bits} bits requested, but only {self.idx} bits left.",
             file=sys.stderr,
         )
-     #   print(f"self.bites:\n{self.bites}", file=sys.stderr)
-     #   sys.exit()
 
 
 class NBin:
