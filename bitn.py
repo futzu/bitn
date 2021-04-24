@@ -10,9 +10,10 @@ class BitBin:
     """
 
     def __init__(self, bites):
-        #self.bites = bites
+        # self.bites = bites
         self.bitsize = self.idx = len(bites) << 3
         self.bits = int.from_bytes(bites, byteorder="big")
+        self.asdecodedhex = self.asascii
 
     def as90k(self, num_bits):
         """
@@ -46,7 +47,7 @@ class BitBin:
         as bytes decoded to ascii
         """
         k = self.asint(num_bits)
-        w = (num_bits >> 3)
+        w = num_bits >> 3
         return int.to_bytes(k, w, byteorder="big").decode("utf-8")
 
     def asflag(self, num_bits=1):
@@ -94,11 +95,14 @@ class NBin:
         """
         bites_wide = self.idx >> 3
         self.bites += int.to_bytes(self.nbits, bites_wide, byteorder="big")
-        # print(self.bites)
         self.nbits = 0
         self.idx = 0
 
     def add_bites(self, plus_bites, bit_len):
+        """
+        add_bites appends plus_bites
+        to self.bites
+        """
         self.bites += plus_bites
         self.nbits2bites()
 
