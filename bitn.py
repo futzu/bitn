@@ -1,3 +1,8 @@
+"""
+The bitn.BitBin and bitn.NBin classes
+"""
+
+
 import sys
 
 
@@ -13,17 +18,16 @@ class BitBin:
         # self.bites = bites
         self.bitsize = self.idx = len(bites) << 3
         self.bits = int.from_bytes(bites, byteorder="big")
-        self.asdecodedhex = self.asascii
 
-    def as90k(self, num_bits):
+    def as_90k(self, num_bits):
         """
         Returns num_bits
         of bits as 90k time
         """
-        ninetyk = self.asint(num_bits) / 90000.0
+        ninetyk = self.as_int(num_bits) / 90000.0
         return round(ninetyk, 6)
 
-    def asint(self, num_bits):
+    def as_int(self, num_bits):
         """
         Starting at self.idx of self.bits,
         slice off num_bits of bits.
@@ -31,30 +35,38 @@ class BitBin:
         if self.idx >= num_bits:
             self.idx -= num_bits
             return (self.bits >> (self.idx)) & ~(~0 << num_bits)
-        else:
-            self.negative_shift(num_bits)
+        return self.negative_shift(num_bits)
 
-    def ashex(self, num_bits):
+    def as_hex(self, num_bits):
         """
         Returns the hex value
         of num_bits of bits
         """
-        return hex(self.asint(num_bits))
+        return hex(self.as_int(num_bits))
 
-    def asascii(self, num_bits):
+    def as_ascii(self, num_bits):
         """
         Returns num_bits of bits
-        as bytes decoded to ascii
+        as bytes decoded to as_ascii
         """
-        k = self.asint(num_bits)
-        w = num_bits >> 3
-        return int.to_bytes(k, w, byteorder="big").decode("utf-8")
+        stuff = self.as_int(num_bits)
+        wide = num_bits >> 3
+        return int.to_bytes(stuff, wide, byteorder="big").decode()
 
-    def asflag(self, num_bits=1):
+    def as_raw(self, num_bits):
+        """
+        Returns num_bits of bits
+        as bytes
+        """
+        stuff = self.as_int(num_bits)
+        wide = num_bits >> 3
+        return int.to_bytes(stuff, wide, byteorder="big")
+
+    def as_flag(self, num_bits=1):
         """
         Returns one bit as True or False
         """
-        return self.asint(num_bits) & 1 == 1
+        return self.as_int(num_bits) & 1 == 1
 
     def forward(self, num_bits):
         """
@@ -70,6 +82,10 @@ class BitBin:
         """
         print(
             f"{num_bits} bits requested, but only {self.idx} bits left.",
+            file=sys.stderr,
+        )
+        print(
+            f"\n bytes remaining: {self.as_raw(self.idx)} ",
             file=sys.stderr,
         )
 
@@ -98,7 +114,7 @@ class NBin:
         self.nbits = 0
         self.idx = 0
 
-    def add_bites(self, plus_bites, bit_len):
+    def add_bites(self, plus_bites):
         """
         add_bites appends plus_bites
         to self.bites
