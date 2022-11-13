@@ -44,16 +44,22 @@ class BitBin:
         """
         return hex(self.as_int(num_bits))
 
-    def as_ascii(self, num_bits):
+    def as_charset(self, num_bits, charset="ascii"):
         """
         Returns num_bits of bits
-        as bytes decoded to as_ascii
+        as bytes decoded as charset
+        default charset is ascii.
         """
+        # print(charset)
         stuff = self.as_int(num_bits)
         wide = num_bits >> 3
-        return int.to_bytes(stuff, wide, byteorder="big").decode()
+        if charset is None:
+            return int.to_bytes(stuff, wide, byteorder="big")
+        return int.to_bytes(stuff, wide, byteorder="big").decode(
+            charset, errors="replace"
+        )
 
-    def as_raw(self, num_bits):
+    def as_bytes(self, num_bits):
         """
         Returns num_bits of bits
         as bytes
@@ -85,7 +91,7 @@ class BitBin:
             file=sys.stderr,
         )
         print(
-            f"\n bytes remaining: {self.as_raw(self.idx)} ",
+            f"\n bytes remaining: {self.as_bytes(self.idx)} ",
             file=sys.stderr,
         )
 
@@ -120,7 +126,9 @@ class NBin:
         to self.bites
         """
         self.bites += plus_bites
-        self.nbits2bites()
+
+    #  if self.idx % 8 == 0:
+    #     self.nbits2bites()
 
     def add_int(self, int_bits, bit_len):
         """
